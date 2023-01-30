@@ -1,16 +1,32 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
-import App from './App'
+import Detail from './Detail';
+import Home from './Home';
 
 import './styles/index.css'
 
 const rootView = document.getElementById('root')
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/product/:id",
+    element: <Detail />
+  }
+]);
+
 
 if (rootView) {
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <RouterProvider router={router} />
     </React.StrictMode>,
     rootView
   )
