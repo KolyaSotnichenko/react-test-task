@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material'
 import { Container, Box } from '@mui/system'
+import Carousel from 'react-material-ui-carousel'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { getSizes } from './services/api'
@@ -47,7 +48,33 @@ const Detail = () => {
             }}
         >
             <Box>
-                <Box
+                <Carousel
+                    sx={{
+                        width: 350,
+                        textAlign: 'center'
+                    }}
+                    autoPlay={false}
+                    navButtonsAlwaysVisible
+                    indicators
+                >
+                    {
+                        item.colors[selectedColor].images.map((image, index) => (
+                            <Box
+                                key={index}
+                                component="img"
+                                sx={{
+                                    height: 233,
+                                    width: 350,
+                                    maxHeight: {xs: 233, md: 350},
+                                    maxWidth: {xs: 350, md: 250}
+                                }}
+                                alt="Product image"
+                                src={image}
+                            />
+                        ))
+                    }
+                </Carousel>
+                {/* <Box
                     component="img"
                     sx={{
                         height: 233,
@@ -57,7 +84,7 @@ const Detail = () => {
                     }}
                     alt="Product Images"
                     src={item.colors[selectedColor].images[0]}
-                />
+                /> */}
             </Box>
             <Box
                 sx={{
